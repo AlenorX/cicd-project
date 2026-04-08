@@ -13,5 +13,5 @@
 **Адрес:** http://localhost:5090 (Данный репозиторий предназаначен для самостоятельного размещения на серверах)
 
 **Endpoints и ответы:**
-Стандартный ответ - {"status": [status], "message": [message]}
-Ответ с фактами - {"status": [status], "factCat": [fact], "factStudio": [fact]}
+1) Стандартный ответ - {"status": [status], "message": [message]}
+2) Ответ с фактами - {"status": [status], "factCat": [fact], "factStudio": [fact]}
