@@ -16,7 +16,7 @@ test-job:
     - docker compose up -d
     - sleep 6
     - curl -f http://localhost:5090/random/status || exit 1
-  after-script:
+  after_script:
     - sudo docker compose down
 
 #deploy-job:      

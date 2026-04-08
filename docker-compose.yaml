@@ -1,7 +1,7 @@
 services:
   random-service:
     image: random-service
-    build: /random-service
+    build: ./random-service
     ports:
       - 5090:5090
     restart: always
