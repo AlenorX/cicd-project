@@ -1,24 +1,26 @@
 stages:
   - build
   - test
-  - deploy
+ # - deploy
 
 build-job:
   stage: build
   script:
-    - echo "Compiling the code..."
-    - echo "Compile complete."
+    - echo "Start building...."
+    - docker compose build
 
 test-job:
   stage: test
   script:
-    - echo "Running unit tests... This will take about 60 seconds."
-    - sleep 60
-    - echo "Code coverage is 90%"
+    - echo "Start testing...."
+    - docker compose up -d
+    - sleep 6
+    - curl -f http://localhost:5090/random/status || exit 1
+  after-script:
+    - sudo docker compose down
 
-deploy-job:      
-  stage: deploy  
-  environment: production
-  script:
-    - echo "Deploying application..."
-    - echo "Application successfully deployed."
+#deploy-job:      
+#  stage: deploy  
+#  script:
+#    - echo "Deploying application..."
+#    - docker compose up -d
