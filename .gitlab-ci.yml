@@ -1,23 +1,19 @@
 stages:
   - build
   - test
- # - deploy
+#  - deploy
 
 build-job:
   stage: build
   script:
     - echo "Start building...."
-    - docker compose build
+    - docker build -t random-service ./random-service
 
 test-job:
   stage: test
   script:
     - echo "Start testing...."
-    - docker compose up -d
-    - sleep 6
-    - curl -f http://localhost:5090/random/status || exit 1
-  after_script:
-    - sudo docker compose down
+    - docker run --rm random-service pytest -s -v
 
 #deploy-job:      
 #  stage: deploy  
